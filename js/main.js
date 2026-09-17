@@ -219,7 +219,7 @@
         { threshold: 0.15 }
     );
 
-    var sections = document.querySelectorAll('.overview-card, .stage-item, .ref-item, .feature-item, .equation-card');
+    var sections = document.querySelectorAll('.overview-card, .stage-item, .ref-item, .feature-item, .equation-card, .var-card, .validation-card, .threshold-card');
     sections.forEach(function (el) {
         observer.observe(el);
     });

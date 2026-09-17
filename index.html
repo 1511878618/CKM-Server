@@ -25,9 +25,12 @@
             </a>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#overview" class="nav-link">Overview</a></li>
-                <li><a href="#about" class="nav-link">About the Model</a></li>
-                <li><a href="#calculator" class="nav-link">Risk Calculator</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#calculator" class="nav-link">Calculator</a></li>
+                <li><a href="#variables" class="nav-link">Variables</a></li>
                 <li><a href="#stages" class="nav-link">CKM Stages</a></li>
+                <li><a href="#equation" class="nav-link">Equation</a></li>
+                <li><a href="#validation" class="nav-link">Validation</a></li>
                 <li><a href="#references" class="nav-link">References</a></li>
             </ul>
             <button class="nav-toggle" id="navToggle" aria-label="Menu">
@@ -252,7 +255,7 @@
                     </div>
                     <div class="form-info">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 16v-4m0-4h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z" stroke="#0891B2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        <span>CHARGE-AF and PREVENT-CVD are expressed as percentages (0-100). CKM PRS is a continuous score (typically near 1.0).</span>
+                        <span>CHARGE-AF and PREVENT-CVD are expressed as percentages (0-100). CKM PRS is a continuous score (typically near 1.0). See <a href="#variables" style="color:var(--color-primary);font-weight:600;">Variable Definitions</a> for details.</span>
                     </div>
                     <button class="btn btn-primary calc-btn" id="calcBtn">
                         Calculate Risk
@@ -293,6 +296,141 @@
                         <div class="result-disclaimer">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                             <span>This tool is for clinical reference only and does not replace professional judgment. Use in conjunction with comprehensive clinical assessment.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Data privacy note -->
+            <div class="data-privacy-note">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#0891B2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span><strong>Data Privacy:</strong> All calculations are performed locally in your browser. No patient data is transmitted to or stored on any server.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== Variable Definitions ========== -->
+    <section class="variables" id="variables">
+        <div class="container">
+            <div class="section-header center">
+                <span class="section-tag">Variable Definitions</span>
+                <h2 class="section-title">Model Input Variables</h2>
+                <p class="section-desc">The CKM Score model integrates five variables spanning genetic risk, clinical risk scores, and demographics. Each variable is described below.</p>
+            </div>
+            <div class="var-list">
+                <!-- CHARGE-AF -->
+                <div class="var-card">
+                    <div class="var-header">
+                        <span class="var-symbol">CHARGE-AF</span>
+                        <span class="var-type">Genetic Risk Score</span>
+                    </div>
+                    <div class="var-body">
+                        <div class="var-field">
+                            <span class="var-field-label">Description</span>
+                            <p>The CHARGE-AF (Cohorts for Heart and Aging Research in Genomic Epidemiology - Atrial Fibrillation) genetic risk score quantifies an individual's inherited susceptibility to atrial fibrillation based on a weighted sum of genetic variants (SNPs) associated with AF risk.</p>
+                        </div>
+                        <div class="var-field">
+                            <span class="var-field-label">Input Format</span>
+                            <p>Expressed as a percentage (0&ndash;100%), representing the estimated absolute risk of atrial fibrillation.</p>
+                        </div>
+                        <div class="var-field">
+                            <span class="var-field-label">Source</span>
+                            <p>Derived from genome-wide genotyping data using the CHARGE-AF polygenic risk score weights. Requires genetic testing or imputed genotype data.</p>
+                        </div>
+                        <div class="var-field">
+                            <span class="var-field-label">Key Reference</span>
+                            <p>Lubitz SA, et al. <em>Circulation</em>. 2014;129(16):e311-e312.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PREVENT-CVD -->
+                <div class="var-card">
+                    <div class="var-header">
+                        <span class="var-symbol">PREVENT-CVD</span>
+                        <span class="var-type">Clinical Risk Score</span>
+                    </div>
+                    <div class="var-body">
+                        <div class="var-field">
+                            <span class="var-field-label">Description</span>
+                            <p>The PREVENT (Predicting Risk of cardiovascular disease EVENTs) CVD risk score, developed by the American Heart Association, estimates the 10-year risk of total cardiovascular disease (including heart failure, atrial fibrillation, and coronary heart disease). It incorporates age, sex, blood pressure, cholesterol, diabetes, smoking, eGFR, UACR, and BMI.</p>
+                        </div>
+                        <div class="var-field">
+                            <span class="var-field-label">Input Format</span>
+                            <p>Expressed as a percentage (0&ndash;100%), representing the estimated 10-year absolute CVD risk.</p>
+                        </div>
+                        <div class="var-field">
+                            <span class="var-field-label">Source</span>
+                            <p>Calculated using the AHA PREVENT risk equations. Can be obtained from the <a href="https://www.cvriskcalculator.com/" target="_blank" rel="noopener" style="color:var(--color-primary);font-weight:600;">AHA PREVENT Calculator</a>.</p>
+                        </div>
+                        <div class="var-field">
+                            <span class="var-field-label">Key Reference</span>
+                            <p>Khan SS, et al. <em>Circulation</em>. 2024;149(20):e871-e886.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Age -->
+                <div class="var-card">
+                    <div class="var-header">
+                        <span class="var-symbol">Age</span>
+                        <span class="var-type">Demographic</span>
+                    </div>
+                    <div class="var-body">
+                        <div class="var-field">
+                            <span class="var-field-label">Description</span>
+                            <p>Patient age at baseline assessment, in years. Age is a fundamental demographic variable in cardiovascular risk modeling and contributes to CKM progression risk assessment.</p>
+                        </div>
+                        <div class="var-field">
+                            <span class="var-field-label">Input Format</span>
+                            <p>Integer value, 18&ndash;100 years.</p>
+                        </div>
+                        <div class="var-field">
+                            <span class="var-field-label">Source</span>
+                            <p>Self-reported or medical record age at time of assessment.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sex -->
+                <div class="var-card">
+                    <div class="var-header">
+                        <span class="var-symbol">Sex</span>
+                        <span class="var-type">Demographic</span>
+                    </div>
+                    <div class="var-body">
+                        <div class="var-field">
+                            <span class="var-field-label">Description</span>
+                            <p>Biological sex as recorded in the model. In the CKM Score equation, male sex is coded as 1 and female sex as 0, reflecting sex-based differences in cardiovascular and metabolic disease risk trajectories.</p>
+                        </div>
+                        <div class="var-field">
+                            <span class="var-field-label">Input Format</span>
+                            <p>Binary: Male = 1, Female = 0.</p>
+                        </div>
+                        <div class="var-field">
+                            <span class="var-field-label">Source</span>
+                            <p>Biological sex as recorded in the medical record.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CKM PRS -->
+                <div class="var-card">
+                    <div class="var-header">
+                        <span class="var-symbol">CKM PRS</span>
+                        <span class="var-type">Polygenic Risk Score</span>
+                    </div>
+                    <div class="var-body">
+                        <div class="var-field">
+                            <span class="var-field-label">Description</span>
+                            <p>The CKM Polygenic Risk Score (PRS) is a composite genetic score capturing inherited susceptibility to cardiovascular-kidney-metabolic disease progression. It aggregates the effects of multiple genetic variants (SNPs) associated with CKM-related pathways, including cardiovascular, renal, and metabolic traits.</p>
+                        </div>
+                        <div class="var-field">
+                            <span class="var-field-label">Input Format</span>
+                            <p>Continuous score, typically distributed around 1.0. Values above 1.0 indicate above-average genetic predisposition; below 1.0 indicates below-average risk.</p>
+                        </div>
+                        <div class="var-field">
+                            <span class="var-field-label">Source</span>
+                            <p>Derived from genome-wide genotyping or imputed genotype data using CKM PRS weights. Requires genetic testing or biobank data.</p>
                         </div>
                     </div>
                 </div>
@@ -412,6 +550,113 @@
                     </table>
                 </div>
             </div>
+
+            <!-- Risk Thresholds -->
+            <div class="risk-thresholds">
+                <h3 class="thresholds-title">Risk Stratification Thresholds</h3>
+                <p class="thresholds-desc">The CKM Score classifies patients into four risk categories based on the predicted probability of progression to CKM Stage 4. Thresholds are aligned with the PREVENT-CVD risk stratification framework and will be refined in collaboration with clinical partners.</p>
+                <div class="thresholds-grid">
+                    <div class="threshold-card risk-low">
+                        <div class="threshold-range">&lt; 5%</div>
+                        <div class="threshold-label">Low Risk</div>
+                        <p>Low probability of CKM Stage 4 progression. Maintain healthy lifestyle and periodic screening.</p>
+                    </div>
+                    <div class="threshold-card risk-moderate">
+                        <div class="threshold-range">5% &ndash; &lt;20%</div>
+                        <div class="threshold-label">Moderate Risk</div>
+                        <p>Moderate risk. Address modifiable factors and schedule regular follow-up.</p>
+                    </div>
+                    <div class="threshold-card risk-high">
+                        <div class="threshold-range">20% &ndash; &lt;40%</div>
+                        <div class="threshold-label">High Risk</div>
+                        <p>Significantly elevated risk. Prompt clinical evaluation and targeted intervention advised.</p>
+                    </div>
+                    <div class="threshold-card risk-very-high">
+                        <div class="threshold-range">&ge; 40%</div>
+                        <div class="threshold-label">Very High Risk</div>
+                        <p>Substantially elevated risk. Comprehensive intervention strongly recommended.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== Model Development & Validation ========== -->
+    <section class="validation" id="validation">
+        <div class="container">
+            <div class="section-header center">
+                <span class="section-tag">Development &amp; Validation</span>
+                <h2 class="section-title">Model Development and Validation</h2>
+                <p class="section-desc">The CKM Score was developed and externally validated using large-scale population-based biobank cohorts.</p>
+            </div>
+            <div class="validation-grid">
+                <!-- Development -->
+                <div class="validation-card validation-dev">
+                    <div class="validation-badge">Development Cohort</div>
+                    <h3>UK Biobank (UKB)</h3>
+                    <p>The CKM Score model was developed in the <strong>UK Biobank</strong>, one of the world's largest prospective population-based cohorts, comprising approximately 500,000 participants aged 40-69 years with extensive genetic, clinical, and longitudinal follow-up data.</p>
+                    <div class="validation-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Cohort</span>
+                            <span class="meta-value">UK Biobank</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Role</span>
+                            <span class="meta-value">Model Development</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Design</span>
+                            <span class="meta-value">Prospective Cohort</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Validation 1 -->
+                <div class="validation-card validation-val">
+                    <div class="validation-badge">External Validation</div>
+                    <h3>Million Veteran Program (MVP)</h3>
+                    <p>The model was externally validated in the <strong>Million Veteran Program (MVP)</strong>, a national, longitudinal research program of the U.S. Department of Veterans Affairs, encompassing over 900,000 veteran participants with rich genomic and electronic health record data.</p>
+                    <div class="validation-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Cohort</span>
+                            <span class="meta-value">MVP</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Role</span>
+                            <span class="meta-value">External Validation</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Design</span>
+                            <span class="meta-value">Prospective Cohort</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Validation 2 -->
+                <div class="validation-card validation-val">
+                    <div class="validation-badge">External Validation</div>
+                    <h3>Mass General Brigham Biobank (MGBB)</h3>
+                    <p>The model was further validated in the <strong>Mass General Brigham Biobank (MGBB)</strong>, an academic medical center-linked biobank with linked genomic and longitudinal electronic health record data from one of the largest hospital-based research cohorts in the United States.</p>
+                    <div class="validation-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Cohort</span>
+                            <span class="meta-value">MGBB</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Role</span>
+                            <span class="meta-value">External Validation</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Design</span>
+                            <span class="meta-value">Hospital-based Cohort</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="validation-note">
+                <svg width="18"18 height="18" viewBox="0 0 24 24" fill="none"><path d="M12 16v-4m0-4h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z" stroke="#0891B2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Detailed model performance metrics (C-index, calibration, sensitivity/specificity) will be added upon publication. The model is currently under peer review.</span>
+            </div>
         </div>
     </section>
 
@@ -454,6 +699,20 @@
                 <div class="ref-item">
                     <span class="ref-number">[5]</span>
                     <div class="ref-content">
+                        <p class="ref-title">UK Biobank: A Resource for Population-Based Studies</p>
+                        <p class="ref-authors">Sudlow C, et al. PLoS Med. 2015;12(6):e1001779.</p>
+                    </div>
+                </div>
+                <div class="ref-item">
+                    <span class="ref-number">[6]</span>
+                    <div class="ref-content">
+                        <p class="ref-title">Million Veteran Program: A Mega-Biobank for Precision Medicine</p>
+                        <p class="ref-authors">Gaziano JM, et al. Am J Public Health. 2016;106(11):e1-e2.</p>
+                    </div>
+                </div>
+                <div class="ref-item">
+                    <span class="ref-number">[7]</span>
+                    <div class="ref-content">
                         <p class="ref-title">KDIGO 2024 Clinical Practice Guideline for the Evaluation and Management of CKD</p>
                         <p class="ref-authors">Kidney Disease: Improving Global Outcomes (KDIGO). Kidney Int. 2024.</p>
                     </div>
@@ -478,16 +737,17 @@
                         <li><a href="#overview">Overview</a></li>
                         <li><a href="#about">About the Model</a></li>
                         <li><a href="#calculator">Risk Calculator</a></li>
+                        <li><a href="#variables">Variable Definitions</a></li>
                         <li><a href="#stages">CKM Stages</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Resources</h4>
                     <ul>
-                        <li><a href="#references">References</a></li>
                         <li><a href="#equation">Model Equation</a></li>
-                        <li><a href="#">AHA Guidelines</a></li>
-                        <li><a href="#">PREVENT Model</a></li>
+                        <li><a href="#validation">Development &amp; Validation</a></li>
+                        <li><a href="#references">References</a></li>
+                        <li><a href="https://www.cvriskcalculator.com/" target="_blank" rel="noopener">AHA PREVENT Calculator</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -501,6 +761,7 @@
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2024 CKM Score. For clinical reference only &mdash; final diagnosis requires professional clinical judgment.</p>
+                <p class="footer-updated">Last updated: September 2024</p>
             </div>
         </div>
     </footer>
